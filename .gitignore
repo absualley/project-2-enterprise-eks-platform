@@ -1,0 +1,26 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+
+# Terraform plans
+*.tfplan
+
+# SSH Keys
+*.pem
+
+# macOS
+.DS_Store
+
+# Ansible
+*.retry
+
+# Kubernetes
+*.kubeconfig
+
+# IDE
+.vscode/
+
+# Logs
+*.log
