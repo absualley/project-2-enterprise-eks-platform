@@ -1,9 +1,3 @@
-
-
-#################################################
-# Project Configuration
-#################################################
-
 variable "project_name" {
   description = "Project name"
   type        = string
@@ -15,13 +9,9 @@ variable "environment" {
 }
 
 variable "cluster_name" {
-  description = "Amazon EKS cluster name"
+  description = "EKS cluster name"
   type        = string
 }
-
-#################################################
-# Networking
-#################################################
 
 variable "vpc_cidr" {
   description = "VPC CIDR block"
@@ -49,12 +39,12 @@ variable "private_subnet_2_cidr" {
 }
 
 variable "availability_zone_1" {
-  description = "Availability Zone 1"
+  description = "Availability Zone for subnet 1"
   type        = string
 }
 
 variable "availability_zone_2" {
-  description = "Availability Zone 2"
+  description = "Availability Zone for subnet 2"
   type        = string
 }
 
