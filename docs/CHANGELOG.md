@@ -13,3 +13,26 @@
 - Added initial documentation
 - Implemented IAM module
 - Began Networking module
+
+# Changelog
+
+## v0.2.0
+
+### Added
+
+- Terraform IAM module
+- Terraform Networking module
+- VPC
+- Internet Gateway
+- Public Subnets
+- Private Subnets
+- NAT Gateway
+- Route Tables
+- Route Table Associations
+
+### Validation
+
+- terraform fmt
+- terraform validate
+- terraform plan
+- terraform apply

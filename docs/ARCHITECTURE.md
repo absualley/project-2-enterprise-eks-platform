@@ -74,3 +74,23 @@ Helm deploys WordPress using a configurable Helm chart.
 - Private Route Table
 
 Private worker nodes access the Internet through the NAT Gateway while remaining inaccessible from the public Internet.
+
+Terraform Root Module
+│
+├── IAM Module
+│   ├── Cluster IAM Role
+│   └── Worker Node IAM Role
+│
+├── Networking Module
+│   ├── VPC
+│   ├── Internet Gateway
+│   ├── Public Subnets
+│   ├── Private Subnets
+│   ├── NAT Gateway
+│   └── Route Tables
+│
+├── Security Module
+│   (Next)
+│
+└── EKS Module
+   (Next)
