@@ -36,3 +36,17 @@ Example:
 - WordPress
 - Autoscaling
 - Monitoring
+
+Terraform Apply Completed
+
+Amazon EKS Cluster:
+✓ Running
+
+Managed Node Group:
+✓ Running
+
+kubectl:
+✓ Connected
+
+Worker Nodes:
+✓ 2 Ready

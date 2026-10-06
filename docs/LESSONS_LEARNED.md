@@ -21,4 +21,7 @@
 - Validate module integration before applying changes.
 - Keep security groups isolated within their own Terraform module.
 
-
+• Always verify Terraform-created resource names.
+• Use aws eks list-clusters before troubleshooting.
+• Verify kubectl connectivity immediately after deployment.
+• Build and validate one Terraform module at a time.

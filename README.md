@@ -32,3 +32,15 @@
 - WordPress Deployment
 - Horizontal Pod Autoscaler
 - End-to-End Testing
+## Completed
+
+- Repository Setup
+- Terraform Foundation
+- IAM Module
+- Networking Module
+- Security Module
+- Amazon EKS Module
+
+## In Progress
+
+- Ansible Automation

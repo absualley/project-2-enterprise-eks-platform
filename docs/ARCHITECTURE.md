@@ -117,3 +117,13 @@ Terraform Root Module
 - WordPress Deployment
 - Horizontal Pod Autoscaler
 - End-to-End Testing
+
+## v0.4.0
+
+### Added
+
+- Amazon EKS Cluster
+- Amazon EKS Managed Node Group
+- Kubernetes API Endpoint
+- Terraform Outputs
+- kubectl Integration

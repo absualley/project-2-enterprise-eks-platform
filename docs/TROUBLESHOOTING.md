@@ -39,3 +39,21 @@ Added missing variables to the root `variables.tf` and passed them into the netw
 - terraform validate
 - terraform plan
 - terraform apply
+
+Problem
+
+aws eks describe-cluster returned:
+
+ResourceNotFoundException
+
+Cause
+
+The wrong cluster name was used.
+
+Resolution
+
+Verified the cluster name using:
+
+aws eks list-clusters
+
+Then updated kubeconfig using the correct cluster name.
