@@ -23,3 +23,19 @@ Terraform reported undeclared input variables.
 ### Resolution
 
 Added missing variables to the root `variables.tf` and passed them into the networking module.
+
+## v0.3.0
+
+### Added
+
+- Security Module
+- EKS Cluster Security Group
+- Worker Node Security Group
+- Security Group Rules
+
+### Validation
+
+- terraform fmt
+- terraform validate
+- terraform plan
+- terraform apply

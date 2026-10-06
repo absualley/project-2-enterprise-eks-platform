@@ -11,3 +11,14 @@
 
 - Review changes with `git status` before committing.
 - Commit only after validation and documentation updates.
+
+## Security Module
+
+### Lessons Learned
+
+- Build modules with a single responsibility.
+- Pass outputs between modules instead of hardcoding resource IDs.
+- Validate module integration before applying changes.
+- Keep security groups isolated within their own Terraform module.
+
+
