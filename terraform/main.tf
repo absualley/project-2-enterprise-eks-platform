@@ -32,3 +32,33 @@ module "security" {
 
   vpc_id = module.networking.vpc_id
 }
+
+module "eks" {
+
+  source = "./modules/eks"
+
+  project_name = var.project_name
+  environment  = var.environment
+  cluster_name = var.cluster_name
+
+  ###############################################
+  # IAM
+  ###############################################
+
+  cluster_role_arn = module.iam.cluster_role_arn
+  node_role_arn    = module.iam.node_role_arn
+
+  ###############################################
+  # Networking
+  ###############################################
+
+  subnet_ids = module.networking.private_subnet_ids
+
+  ###############################################
+  # Security
+  ###############################################
+
+  cluster_security_group_id = module.security.cluster_security_group_id
+  node_security_group_id    = module.security.node_security_group_id
+
+}
