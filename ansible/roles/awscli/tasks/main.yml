@@ -1,0 +1,122 @@
+---
+# ==========================================
+# Verify AWS CLI Installation
+# ==========================================
+
+- name: Check AWS CLI version
+  command: aws --version
+  register: aws_version
+  changed_when: false
+
+- name: Display AWS CLI version
+  debug:
+    var: aws_version.stdout
+
+# ==========================================
+# Verify AWS Identity
+# ==========================================
+
+- name: Get AWS caller identity
+  command: aws sts get-caller-identity
+  register: aws_identity
+  changed_when: false
+
+- name: Display AWS caller identity
+  debug:
+    var: aws_identity.stdout 
+
+
+# ==========================================
+# Verify kubectl Installation
+# ==========================================
+
+- name: Check kubectl version
+  command: kubectl version --client
+  register: kubectl_version
+  changed_when: false
+
+- name: Display kubectl version
+  debug:
+    var: kubectl_version.stdout
+
+# ==========================================
+# Verify Cluster Connectivity
+# ==========================================
+
+- name: Get Kubernetes nodes
+  command: kubectl get nodes
+  register: cluster_nodes
+  changed_when: false
+
+- name: Display Kubernetes nodes
+  debug:
+    var: cluster_nodes.stdout
+
+
+# ==========================================
+# Verify Helm Installation
+# ==========================================
+
+- name: Check Helm version
+  command: helm version
+  register: helm_version
+  changed_when: false
+
+- name: Display Helm version
+  debug:
+    var: helm_version.stdout
+
+# ==========================================
+# Add Bitnami Repository
+# ==========================================
+
+- name: Add Bitnami Helm repository
+  command: helm repo add bitnami https://charts.bitnami.com/bitnami
+  register: helm_repo
+  changed_when: "'already exists' not in helm_repo.stderr"
+
+- name: Update Helm repositories
+  command: helm repo update
+
+
+# ==========================================
+# Verify Cluster Information
+# ==========================================
+
+- name: Get cluster information
+  command: kubectl cluster-info
+  register: cluster_info
+  changed_when: false
+
+- name: Display cluster information
+  debug:
+    var: cluster_info.stdout
+
+# ==========================================
+# Verify Namespaces
+# ==========================================
+
+- name: List Kubernetes namespaces
+  command: kubectl get namespaces
+  register: namespaces
+  changed_when: false
+
+- name: Display namespaces
+  debug:
+    var: namespaces.stdout
+
+# ==========================================
+# Create WordPress Namespace
+# ==========================================
+
+- name: Create wordpress namespace
+  command: kubectl create namespace wordpress
+  register: namespace_result
+  failed_when: false
+  changed_when: "'created' in namespace_result.stdout"
+
+- name: Display namespace result
+  debug:
+    var: namespace_result.stdout 
+
+

@@ -1,0 +1,11 @@
+---
+- name: Configure Amazon EKS Platform
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  roles:
+    - awscli
+    - kubectl
+    - helm
+    - eks-tools
