@@ -91,4 +91,68 @@ resource "aws_iam_role_policy_attachment" "ecr" {
 
 }
 
+#################################################
+# AWS Account Information
+#################################################
 
+data "aws_caller_identity" "current" {}
+
+#################################################
+# EBS CSI Driver Assume Role Policy
+#################################################
+
+data "aws_iam_policy_document" "ebs_csi_assume_role" {
+
+  statement {
+
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    effect = "Allow"
+
+    principals {
+
+      type = "Federated"
+
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/3805175FBD767E6D2A2FC1521A7EB2A1"
+      ]
+    }
+
+    condition {
+
+      test = "StringEquals"
+
+      variable = "oidc.eks.us-east-1.amazonaws.com/id/3805175FBD767E6D2A2FC1521A7EB2A1:sub"
+
+      values = [
+        "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+      ]
+    }
+  }
+}
+
+#################################################
+# EBS CSI IAM Role
+#################################################
+
+resource "aws_iam_role" "ebs_csi" {
+
+  name = "${var.project_name}-ebs-csi-role"
+
+  assume_role_policy = data.aws_iam_policy_document.ebs_csi_assume_role.json
+
+  tags = {
+    Name = "${var.project_name}-ebs-csi-role"
+  }
+}
+
+#################################################
+# Attach Amazon EBS CSI Driver Policy
+#################################################
+
+resource "aws_iam_role_policy_attachment" "ebs_csi_policy" {
+
+  role = aws_iam_role.ebs_csi.name
+
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+}

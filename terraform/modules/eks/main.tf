@@ -82,3 +82,16 @@ resource "aws_eks_node_group" "main" {
   ]
 
 }
+
+resource "aws_eks_addon" "ebs_csi" {
+
+  cluster_name = aws_eks_cluster.main.name
+
+  addon_name                  = "aws-ebs-csi-driver"
+  service_account_role_arn    = var.ebs_csi_role_arn
+  resolve_conflicts_on_create = "OVERWRITE"
+
+  depends_on = [
+    aws_eks_node_group.main
+  ]
+}

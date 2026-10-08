@@ -41,6 +41,8 @@ module "eks" {
   environment  = var.environment
   cluster_name = var.cluster_name
 
+
+
   ###############################################
   # IAM
   ###############################################
@@ -61,4 +63,12 @@ module "eks" {
   cluster_security_group_id = module.security.cluster_security_group_id
   node_security_group_id    = module.security.node_security_group_id
 
+  ###############################################
+  # EBS CSI
+  ###############################################
+
+  ebs_csi_role_arn = module.iam.ebs_csi_role_arn
 }
+
+
+
