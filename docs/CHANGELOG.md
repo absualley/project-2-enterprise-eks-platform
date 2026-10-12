@@ -52,3 +52,22 @@
 - terraform validate
 - terraform plan
 - terraform apply
+
+# v1.1.0
+
+## Added
+- Dedicated IRSA module
+- Dedicated Add-ons module
+- Terraform-managed IAM OIDC Provider
+- Terraform-managed Amazon EBS CSI Driver
+- gp3 StorageClass
+
+## Changed
+- Refactored Terraform into smaller modules
+- Improved dependency graph
+- Simplified EKS architecture
+
+## Fixed
+- Eliminated manual IRSA setup
+- Eliminated EBS CSI Driver CrashLoopBackOff
+- Fixed PersistentVolume provisioning 

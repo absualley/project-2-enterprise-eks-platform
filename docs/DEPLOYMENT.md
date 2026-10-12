@@ -50,3 +50,19 @@ kubectl:
 
 Worker Nodes:
 ✓ 2 Ready
+
+terraform init
+
+terraform plan
+
+terraform apply
+
+aws eks update-kubeconfig
+
+kubectl apply namespace
+
+kubectl apply storageclass
+
+helm install wordpress
+
+kubectl apply hpa 

@@ -42,3 +42,13 @@ output "node_group_name" {
   description = "Amazon EKS Managed Node Group Name"
   value       = aws_eks_node_group.main.node_group_name
 }
+
+#################################################
+# OIDC Issuer URL
+#################################################
+
+output "oidc_provider_url" {
+  description = "OIDC issuer URL for the EKS cluster"
+  value       = aws_eks_cluster.main.identity[0].oidc[0].issuer
+}
+

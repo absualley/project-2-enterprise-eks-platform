@@ -34,41 +34,38 @@ module "security" {
 }
 
 module "eks" {
-
   source = "./modules/eks"
 
   project_name = var.project_name
   environment  = var.environment
   cluster_name = var.cluster_name
 
-
-
-  ###############################################
-  # IAM
-  ###############################################
-
   cluster_role_arn = module.iam.cluster_role_arn
   node_role_arn    = module.iam.node_role_arn
 
-  ###############################################
-  # Networking
-  ###############################################
-
   subnet_ids = module.networking.private_subnet_ids
-
-  ###############################################
-  # Security
-  ###############################################
 
   cluster_security_group_id = module.security.cluster_security_group_id
   node_security_group_id    = module.security.node_security_group_id
-
-  ###############################################
-  # EBS CSI
-  ###############################################
-
-  ebs_csi_role_arn = module.iam.ebs_csi_role_arn
 }
 
+module "irsa" {
+
+  source = "./modules/irsa"
+
+  project_name = var.project_name
 
 
+  oidc_provider_url = module.eks.oidc_provider_url
+
+}
+
+module "addons" {
+
+  source = "./modules/addons"
+
+  cluster_name = module.eks.cluster_name
+
+  ebs_csi_role_arn = module.irsa.ebs_csi_role_arn
+
+}

@@ -54,14 +54,4 @@ variable "node_security_group_id" {
   type        = string
 }
 
-#################################################
-# EBS CSI IAM Role
-#################################################
 
-variable "ebs_csi_role_arn" {
-
-  description = "IAM Role ARN used by the EBS CSI Driver"
-
-  type = string
-
-}
